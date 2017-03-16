@@ -7,14 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB0750821DDE45F7006DA476 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0750811DDE45F7006DA476 /* PacketTunnelProvider.swift */; };
+		BB0750861DDE45F7006DA476 /* PacketTunnelProvider.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BB07507D1DDE45F7006DA476 /* PacketTunnelProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BB853DC61E7B3DA50086BAA2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB853DC51E7B3DA50086BAA2 /* Reachability.swift */; };
+		BB853DC71E7B3DA50086BAA2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB853DC51E7B3DA50086BAA2 /* Reachability.swift */; };
 		BBBF48F91DDE0FF700FC4150 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF48F81DDE0FF700FC4150 /* AppDelegate.swift */; };
 		BBBF48FB1DDE0FF700FC4150 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF48FA1DDE0FF700FC4150 /* ViewController.swift */; };
 		BBBF48FE1DDE0FF700FC4150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBF48FC1DDE0FF700FC4150 /* Main.storyboard */; };
 		BBBF49001DDE0FF700FC4150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBBF48FF1DDE0FF700FC4150 /* Assets.xcassets */; };
 		BBBF49031DDE0FF700FC4150 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBF49011DDE0FF700FC4150 /* LaunchScreen.storyboard */; };
+		BBFDE81F1E5DF0170008506D /* parsePacket.c in Sources */ = {isa = PBXBuildFile; fileRef = BBFDE81D1E5DF0170008506D /* parsePacket.c */; };
+		BBFDE8201E5DF0170008506D /* parsePacket.c in Sources */ = {isa = PBXBuildFile; fileRef = BBFDE81D1E5DF0170008506D /* parsePacket.c */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BB0750841DDE45F7006DA476 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBBF48ED1DDE0FF700FC4150 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB07507C1DDE45F7006DA476;
+			remoteInfo = PacketTunnelProvider;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB07508A1DDE45F7006DA476 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BB0750861DDE45F7006DA476 /* PacketTunnelProvider.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BB0750671DDE3031006DA476 /* CreateVPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CreateVPN.entitlements; sourceTree = "<group>"; };
+		BB07507D1DDE45F7006DA476 /* PacketTunnelProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnelProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB0750801DDE45F7006DA476 /* PacketTunnelProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelProvider.entitlements; sourceTree = "<group>"; };
+		BB0750811DDE45F7006DA476 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		BB0750831DDE45F7006DA476 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB853DC51E7B3DA50086BAA2 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BBBF48F51DDE0FF700FC4150 /* CreateVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreateVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBBF48F81DDE0FF700FC4150 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBBF48FA1DDE0FF700FC4150 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,9 +58,20 @@
 		BBBF48FF1DDE0FF700FC4150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBBF49021DDE0FF700FC4150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBBF49041DDE0FF700FC4150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBFDE81B1E5DF0160008506D /* CreateVPN-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CreateVPN-Bridging-Header.h"; sourceTree = "<group>"; };
+		BBFDE81C1E5DF0160008506D /* PacketTunnelProvider-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PacketTunnelProvider-Bridging-Header.h"; sourceTree = "<group>"; };
+		BBFDE81D1E5DF0170008506D /* parsePacket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parsePacket.c; sourceTree = "<group>"; };
+		BBFDE81E1E5DF0170008506D /* parsePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parsePacket.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BB07507A1DDE45F7006DA476 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBBF48F21DDE0FF700FC4150 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -35,11 +82,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB07507E1DDE45F7006DA476 /* PacketTunnelProvider */ = {
+			isa = PBXGroup;
+			children = (
+				BB0750811DDE45F7006DA476 /* PacketTunnelProvider.swift */,
+				BB0750831DDE45F7006DA476 /* Info.plist */,
+				BB07507F1DDE45F7006DA476 /* Supporting Files */,
+			);
+			path = PacketTunnelProvider;
+			sourceTree = "<group>";
+		};
+		BB07507F1DDE45F7006DA476 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB0750801DDE45F7006DA476 /* PacketTunnelProvider.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BB5B4B431E6614C30015008E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BBBF48EC1DDE0FF700FC4150 = {
 			isa = PBXGroup;
 			children = (
+				BBFDE81D1E5DF0170008506D /* parsePacket.c */,
+				BBFDE81E1E5DF0170008506D /* parsePacket.h */,
 				BBBF48F71DDE0FF700FC4150 /* CreateVPN */,
+				BB07507E1DDE45F7006DA476 /* PacketTunnelProvider */,
+				BB5B4B431E6614C30015008E /* Frameworks */,
 				BBBF48F61DDE0FF700FC4150 /* Products */,
+				BBFDE81B1E5DF0160008506D /* CreateVPN-Bridging-Header.h */,
+				BBFDE81C1E5DF0160008506D /* PacketTunnelProvider-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				BBBF48F51DDE0FF700FC4150 /* CreateVPN.app */,
+				BB07507D1DDE45F7006DA476 /* PacketTunnelProvider.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,11 +133,13 @@
 		BBBF48F71DDE0FF700FC4150 /* CreateVPN */ = {
 			isa = PBXGroup;
 			children = (
+				BB853DC51E7B3DA50086BAA2 /* Reachability.swift */,
 				BBBF48F81DDE0FF700FC4150 /* AppDelegate.swift */,
 				BBBF48FA1DDE0FF700FC4150 /* ViewController.swift */,
 				BBBF48FC1DDE0FF700FC4150 /* Main.storyboard */,
 				BBBF48FF1DDE0FF700FC4150 /* Assets.xcassets */,
 				BBBF49011DDE0FF700FC4150 /* LaunchScreen.storyboard */,
+				BB0750671DDE3031006DA476 /* CreateVPN.entitlements */,
 				BBBF49041DDE0FF700FC4150 /* Info.plist */,
 			);
 			path = CreateVPN;
@@ -67,6 +148,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BB07507C1DDE45F7006DA476 /* PacketTunnelProvider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB0750871DDE45F7006DA476 /* Build configuration list for PBXNativeTarget "PacketTunnelProvider" */;
+			buildPhases = (
+				BB0750791DDE45F7006DA476 /* Sources */,
+				BB07507A1DDE45F7006DA476 /* Frameworks */,
+				BB07507B1DDE45F7006DA476 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PacketTunnelProvider;
+			productName = PacketTunnelProvider;
+			productReference = BB07507D1DDE45F7006DA476 /* PacketTunnelProvider.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		BBBF48F41DDE0FF700FC4150 /* CreateVPN */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBBF49071DDE0FF700FC4150 /* Build configuration list for PBXNativeTarget "CreateVPN" */;
@@ -74,10 +172,12 @@
 				BBBF48F11DDE0FF700FC4150 /* Sources */,
 				BBBF48F21DDE0FF700FC4150 /* Frameworks */,
 				BBBF48F31DDE0FF700FC4150 /* Resources */,
+				BB07508A1DDE45F7006DA476 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BB0750851DDE45F7006DA476 /* PBXTargetDependency */,
 			);
 			name = CreateVPN;
 			productName = CreateVPN;
@@ -90,14 +190,31 @@
 		BBBF48ED1DDE0FF700FC4150 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Oriol Marí Marqués";
 				TargetAttributes = {
+					BB07507C1DDE45F7006DA476 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 983K2HV8EQ;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					BBBF48F41DDE0FF700FC4150 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 983K2HV8EQ;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -115,11 +232,19 @@
 			projectRoot = "";
 			targets = (
 				BBBF48F41DDE0FF700FC4150 /* CreateVPN */,
+				BB07507C1DDE45F7006DA476 /* PacketTunnelProvider */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BB07507B1DDE45F7006DA476 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBBF48F31DDE0FF700FC4150 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,16 +258,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BB0750791DDE45F7006DA476 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB0750821DDE45F7006DA476 /* PacketTunnelProvider.swift in Sources */,
+				BBFDE8201E5DF0170008506D /* parsePacket.c in Sources */,
+				BB853DC71E7B3DA50086BAA2 /* Reachability.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBBF48F11DDE0FF700FC4150 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BBBF48FB1DDE0FF700FC4150 /* ViewController.swift in Sources */,
+				BBFDE81F1E5DF0170008506D /* parsePacket.c in Sources */,
+				BB853DC61E7B3DA50086BAA2 /* Reachability.swift in Sources */,
 				BBBF48F91DDE0FF700FC4150 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB0750851DDE45F7006DA476 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB07507C1DDE45F7006DA476 /* PacketTunnelProvider */;
+			targetProxy = BB0750841DDE45F7006DA476 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BBBF48FC1DDE0FF700FC4150 /* Main.storyboard */ = {
@@ -164,6 +309,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BB0750881DDE45F7006DA476 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelProvider/PacketTunnelProvider.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 983K2HV8EQ;
+				INFOPLIST_FILE = PacketTunnelProvider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.upc.ac.CreateVPN2.PacketTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "573c811d-88e2-484b-9ea2-c6b23647d58e";
+				PROVISIONING_PROFILE_SPECIFIER = "AC NetworkExtension CreateVPN2 PacketTunnel";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PacketTunnelProvider-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BB0750891DDE45F7006DA476 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelProvider/PacketTunnelProvider.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 983K2HV8EQ;
+				INFOPLIST_FILE = PacketTunnelProvider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.upc.ac.CreateVPN2.PacketTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "572a10e8-4bb9-4012-9b18-d214c1c2dcd1";
+				PROVISIONING_PROFILE_SPECIFIER = "AC NetworkExtension CreateVPN2 PacketTunnel";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PacketTunnelProvider-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		BBBF49051DDE0FF700FC4150 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -182,6 +368,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -232,6 +419,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -260,12 +448,21 @@
 		BBBF49081DDE0FF700FC4150 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CreateVPN/CreateVPN.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 983K2HV8EQ;
 				INFOPLIST_FILE = CreateVPN/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.upc.ac.CreateVPN;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.upc.ac.CreateVPN2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6ce67607-abdf-4307-becf-26a9c50fcc64";
+				PROVISIONING_PROFILE_SPECIFIER = "AC NetworkExtension CreateVPN2";
+				SWIFT_OBJC_BRIDGING_HEADER = "CreateVPN-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -273,12 +470,20 @@
 		BBBF49091DDE0FF700FC4150 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CreateVPN/CreateVPN.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 983K2HV8EQ;
 				INFOPLIST_FILE = CreateVPN/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.upc.ac.CreateVPN;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.upc.ac.CreateVPN2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "71e846b9-a15e-4478-87bd-a4bcc6664fc2";
+				PROVISIONING_PROFILE_SPECIFIER = "AC NetworkExtension CreateVPN2";
+				SWIFT_OBJC_BRIDGING_HEADER = "CreateVPN-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -286,6 +491,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BB0750871DDE45F7006DA476 /* Build configuration list for PBXNativeTarget "PacketTunnelProvider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0750881DDE45F7006DA476 /* Debug */,
+				BB0750891DDE45F7006DA476 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BBBF48F01DDE0FF700FC4150 /* Build configuration list for PBXProject "CreateVPN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -302,6 +516,7 @@
 				BBBF49091DDE0FF700FC4150 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
