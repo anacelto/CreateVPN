@@ -21,33 +21,6 @@
 #include <time.h>
 
 
-u_char parsePacket(uint8_t *packet, int n)
-
-{
-    
-    char address[INET6_ADDRSTRLEN+1];
-    
-    struct ip *iph;
-    
-    iph = (struct ip *)packet;
-    
-    inet_ntop(AF_INET, &(iph->ip_src), address, INET_ADDRSTRLEN);
-    
-    syslog(LOG_WARNING, "LOG_WARNING %s\n", address);
-    
-    while(1) {
-        syslog(LOG_WARNING, "THREAD %d %d\n", getpid(), n);
-        sleep(2);
-    }
-    
-    return iph->ip_ttl;
-    
-}
-
-/*
- Simple udp server
- */
-
 #define BUFLEN 512  //Max length of buffer
 #define PORT 8888   //The port on which to listen for incoming data
 
