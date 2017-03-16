@@ -13,8 +13,12 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     /// The completion handler to call when the tunnel is fully established.
     var pendingStartCompletion: ((Error?) -> Void)?
     
-    /// Connection to oor
-    open var oor: NWUDPSession?
+    /// Socket to handle outgoing packets with OOR
+    open var oorOut: NWUDPSession?
+    
+    // Socket to handle incoming packets with OOR
+    open var oorIn: NWUDPSession?
+    
     
     // Start fake tunnel connection
  override func startTunnel(options: [String : NSObject]? = nil, completionHandler: @escaping (Error?) -> Void) {
@@ -44,18 +48,11 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     // Start OOR
     startOOR()
     
-    // Start reading incoming packets
-    /* connectionUDP?.setReadHandler({dataArray, error in
-        NSLog("CREATEVPN.setReadhandler ERROR \(error)")
-        self.newIncomingPackets(packets: dataArray!)
-    }, maxDatagrams: 32) */
-    
     // Start handling outgoing packets coming from the TUN
     startHandlingPackets()
     
+    // Start monitoring network changes
     reach()
-    
-    NSLog("TUNNEL STARTED")
 }
     
     
@@ -65,18 +62,28 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             // Call to C function to create the swift - c socket and start OOR
             createSocket()
         }
-        
-        // Connect to OOR Socket
+
         var endpoint: NWEndpoint
-        endpoint = NWHostEndpoint(hostname: "127.0.0.1", port: "8888")
-        oor = self.createUDPSession(to: endpoint, from: nil)
         
-        // Start listeing incoming packets coming from OOR
-        oor?.setReadHandler({dataArray, error in
+        // Connect to OOR outgoing Socket
+        endpoint = NWHostEndpoint(hostname: "127.0.0.1", port: "8888")
+        oorOut = self.createUDPSession(to: endpoint, from: nil)
+        
+        // Connect to OOR incoming Socket
+        endpoint = NWHostEndpoint(hostname: "127.0.0.1", port: "8889")
+
+        
+        // Start listeing outgoing packets coming from OOR
+        oorOut?.setReadHandler({dataArray, error in
             NSLog("CREATEVPN.OOR.setReadhandler ERROR \(error)")
-            self.newOORPackets(packets: dataArray!)
+            self.newOOROutPackets(packets: dataArray!)
         }, maxDatagrams: 1)
         
+        // Start listeing incoming packets coming from OOR
+        oorIn?.setReadHandler({dataArray, error in
+            NSLog("CREATEVPN.OOR.setReadhandler ERROR \(error)")
+            self.newOORInPackets(packets: dataArray!)
+        }, maxDatagrams: 1)
         
     }
     
@@ -91,14 +98,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     /// Handle outgoing packets coming from the TUN.
     func handlePackets(_ packets: [Data], protocols: [NSNumber]) {
         
-        /* for packet in packets {
-            // Create a pointer to the packet
-            //let pPacket = UnsafeMutablePointer<UInt8>.allocate(capacity: 60)
-            //packet.copyBytes(to: pPacket, count: 50)
-        } */
-        
         // Write packets to OOR
-        oor?.writeMultipleDatagrams(packets) { error in
+        oorOut?.writeMultipleDatagrams(packets) { error in
             if error != nil {
                 NSLog("CREATEVPN.Provider: connectionUDP.write error: \(error)")
             }
@@ -110,45 +111,45 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
     }
 
-    func newOORPackets(packets: [Data]) {
+    // Handle outgoing packets coming from OOR
+    func newOOROutPackets(packets: [Data]) {
         
         NSLog("PacketFromOOR")
         
-        /*var rloc = NWUDPSession()
+        var rloc = NWUDPSession()
         
         // Connect to supposed RLOC
         var endpoint: NWEndpoint
         endpoint = NWHostEndpoint(hostname: "10.192.243.26", port: "55057")
         rloc = self.createUDPSession(to: endpoint, from: nil)
-        
 
-        
-        // Write packets to supposed RLOC
-        oor?.writeMultipleDatagrams(packets) { error in
+        // Write outgoing packets to supposed RLOC
+        rloc.writeMultipleDatagrams(packets) { error in
             if error != nil {
                 NSLog("CREATEVPN.Provider: connectionUDP.write error: \(error)")
             }
-        }*/
+        }
     }
     
     // Handle incoming packets from WAN
     func newIncomingPackets(packets: [Data]) {
         
-        var protocolArray = [NSNumber]()
-        
-        for packet in packets {
-            protocolArray.append(0x02)
-            // Create a pointer to the packet
-            //let pPacket = UnsafeMutablePointer<UInt8>.allocate(capacity: 60)
-            //packet.copyBytes(to: pPacket, count: 50)
-            // Send the packet to OOR
-            
-         }
-        
-       // Write packets coming from OOR to TUN
-       packetFlow.writePackets(packets, withProtocols: protocolArray)
+        // Write packets to OOR
+        oorIn?.writeMultipleDatagrams(packets) { error in
+            if error != nil {
+                NSLog("CREATEVPN.Provider: connectionUDP.write error: \(error)")
+            }
+        }
     }
     
+    func newOORInPackets(packets: [Data]) {
+        var protocolArray = [NSNumber]()
+        for _ in packets { protocolArray.append(0x02) }
+        // Write incoming packets coming from OOR to TUN
+        packetFlow.writePackets(packets, withProtocols: protocolArray)
+    }
+    
+    // Start monitoring network changes
     func reach() {
         do {
             reachability = try Reachability()
@@ -166,6 +167,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
     }
     
+    // handle network change event
     func reachabilityChanged(_ notification: NSNotification) {
         
         guard let reachability = notification.object as? Reachability else { return }
